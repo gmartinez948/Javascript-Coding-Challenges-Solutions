@@ -11,14 +11,7 @@ function objectToArray(obj){
   // return result variable
   return result;
 }
-
-// objectToArray({
-//   D: 1,
-//   B: 2,
-//   C: 3
-// }) 
-// ➞ [["D", 1], ["B", 2], ["C", 3]]
-
+// testing function
 function assertEquals(actual, expected, testName) {
   if (JSON.stringify(actual) === JSON.stringify(expected)) {
     console.log('passed') 
@@ -45,14 +38,14 @@ Given an array of scrabble tiles, create a function that outputs the maximum pos
 // output: maximum score - number
 function maximumScore(arr) {
   // create a score variable
-  var score = 0;
+  var maxScore = 0;
   // check through the elements of the array
   for (var i = 0; i < arr.length; i++) {
     // add the score to the score variable
-    score += arr[i].score;
+    maxScore += arr[i].score;
   }
   // return score variable
-  return score;
+  return maxScore;
 }
 
 
@@ -122,19 +115,17 @@ function canNest(arr1, arr2) {
     // if arr1 min is greater than arr2 min && arr1 max is less than arr2 max, // return true
     return true;
   } else {
-    // otherwise,
-      // return false; 
     return false;
   }
 }
 
-canNest([1, 2, 3, 4], [0, 6]) //➞ true
+// canNest([1, 2, 3, 4], [0, 6]) //➞ true
 
-canNest([3, 1], [4, 0]) //➞ true
+// canNest([3, 1], [4, 0]) //➞ true
 
-canNest([9, 9, 8], [8, 9]) //➞ false
+// canNest([9, 9, 8], [8, 9]) //➞ false
 
-canNest([1, 2, 3, 4], [2, 3]) //➞ false
+// canNest([1, 2, 3, 4], [2, 3]) //➞ false
 
 function assertEquals(actual, expected, testName) {
   if (JSON.stringify(actual) === JSON.stringify(expected)) {
@@ -194,12 +185,236 @@ function assertEquals(actual, expected, testName) {
 
 ////////////////////////////////////////////////////////////
 
+/*
+Create a function that takes in an array of numbers and returns the sum of its cubes.
+*/
+
+function sumOfCubes(arr) {
+  // create a result variable to hold the sum of cubes
+  var cubed = 0;
+  // check through the length of the array
+  for (var i = 0; i < arr.length; i++) {
+    // change the current element to the cubed and add to result
+    arr[i] = arr[i] **3;
+    cubed += arr[i];
+  }
+  // return result variable
+  return cubed;
+}
 
 
+// sumOfCubes([1, 5, 9]) //➞ 855
+// Since 1^3 + 5^3 + 9^3 = 1 + 125 + 729 = 855
+
+// sumOfCubes([3, 4, 5]) //➞ 216
+
+// sumOfCubes([2]) //➞ 8
+
+// sumOfCubes([]) //➞ 0
 
 
+// assertEquals(sumOfCubes([3, 4, 5], 855, 'Should return cubed sum of all the numbers in the array'));
+
+////////////////////////////////////////////////////////////////////////////////
+
+//A factor chain is an array where each previous element is a factor of the next consecutive element. The following is a factor chain:
+
+function factorChain(arr) {
+}
+
+// factorChain([1, 2, 4, 8, 16, 32]) //➞ true
+
+// factorChain([1, 1, 1, 1, 1, 1]) //➞ true
+
+// factorChain([2, 4, 6, 7, 12]) //➞ false
+
+// factorChain([10, 1]) //➞ false\
 
 
+///////////////////////////////////////////////////
+
+// Write a function that creates an object with each (key, value) pair being the (lower case, upper case) versions of a letter, respectively.
+
+function mapping(arr) {
+  // create a result obj;
+  var result = {};
+  // check through the elements of the input array
+  for (var i = 0; i < arr.length; i++) {
+    // add lowercase element as key and uppercase element as value to obj;
+    var lower = arr[i].toLowerCase();
+    var upper = arr[i].toUpperCase();
+    result[lower] = upper;
+  }
+  // return the result obj;
+  return result;
+}
+
+// assertEquals(mapping(["p", "s"]), { "p": "P", "s": "S" }, 'Should return an object with the property as a lowercase element from the input arr and the value as the same character but uppercase')
+
+// assertEquals(mapping(["a", "b", "c"]), { "a": "A", "b": "B", "c": "C" }, 'Should return an object with the property as a lowercase element from the input arr and the value as the same character but uppercase')
+
+// assertEquals(mapping(["a", "v", "y", "z"]), { "a": "A", "v": "V", "y": "Y", "z": "Z" }, 'Should return an object with the property as a lowercase element from the input arr and the value as the same character but uppercase')
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+Create a function that takes three parameters where:
+
+x is the start of the range (inclusive).
+y is the end of the range (inclusive).
+n is the divisor to be checked against.
+Return an ordered array with numbers in the range that are divisible by the third parameter n. Return an empty array if there are no numbers that are divisible by n.
+*/
+
+function arrayOperation(x, y, n) {
+  // created an array to push the range of x and y
+  var divided = [];
+  // checked through the range of x & y and added them to the divided array
+  for (var i = x; i <= y; i++) {
+    if (i % n === 0) {
+      divided.push(i);
+    }
+  }
+  return divided;
+}
+
+
+// arrayOperation(1, 10, 3) //➞ [3, 6, 9]
+
+// arrayOperation(7, 9, 2) //➞ [8]
+
+// arrayOperation(15, 20, 7) //➞ []
+
+////////////////////////////
+
+
+/*
+Write a function that takes a credit card number and only 
+displays the last four characters. The rest of the card 
+number must be replaced by ************.
+*/
+
+function cardHide(str) {
+  var asterisks = ''
+  for (var i = 0; i < str.length - 4; i++) {
+    asterisks += '*'
+  }
+  var newStr = str.slice(str.length -4)
+  return asterisks + newStr;
+}
+
+
+// cardHide("1234123456785678") //➞ "************5678"
+
+// cardHide("8754456321113213") //➞ "************3213"
+
+// cardHide("35123413355523") //➞ "**********5523"
+
+//////////////////////////////////////////////////////////
+
+/*
+Snail Race
+Steve and Maurice have racing snails. They each have three, a slow s, medium m and fast f one. Although Steve's snails are all a bit stronger than Maurice's, Maurice has a trick up his sleeve. His plan is
+
+Round 1: [s, f] Sacrifice his slowest snail against Steve's fastest.
+Round 2: [m, s] Use his middle snail against Steve's slowest.
+Round 3: [f, m] Use his fastest snail against Steve's middle.
+Create a function that determines whether Maurice's plan will work by outputting true if Maurice wins 2/3 games.
+
+The function inputs:
+
+Array 1: [s, m, f] for Maurice.
+Array 2: [s, m, f] for Steve.
+*/
+
+function mauriceWins(arr1, arr2) {
+  // create a score for steve and maurice
+  var steveScore = 0;
+  var mauriceScore = 0;
+  if (arr1[0] > arr2[arr2.length -1]) {
+    mauriceScore++
+  } else {
+    steveScore++
+  }
+  if (arr1[1] > arr2[0]) {
+    mauriceScore++
+  } else {
+    steveScore++
+  }
+  if (arr1[arr1.length -1] > arr2[1]) {
+    mauriceScore++
+  } else {
+    steveScore++
+  }
+  return (mauriceScore > steveScore);
+}
+
+// mauriceWins([3, 5, 10], [4, 7, 11]) //➞ true
+// // Since the matches are (3, 11), (5, 4) and (10, 7), Maurice wins 2 out of 3.
+
+// mauriceWins([6, 8, 9], [7, 12, 14]) //➞ false
+// Since the matches are (6, 14), (8, 7) and (9, 12), Steve wins 2 out of 3.
+
+// mauriceWins([1, 8, 20], [2, 9, 100]) //➞ true
+
+//////////////////////////////////////////////////////////////////////////////////
+
+// Create a function to count the number of 1s in a 2D array.
+
+function countOnes(arr) {
+  // console.log(arr)
+  // create a counter variable 
+  var counter = 0
+  // check through the length of the array
+  for (var i = 0; i < arr.length; i++) {
+  //    check through each individual array
+    // console.log(arr[i])
+    for (var j = 0; j < arr[i].length; j++) {
+  //      if 1 is found 
+            // add 1 to counter variable
+      // console.log(arr[i][j])
+      var current = arr[i][j];
+      if (current === 1) {
+        counter++
+      }
+    }
+  }
+  // return counter variable
+  return counter;
+}
+
+countOnes([
+  [1, 0],
+  [0, 0]
+]) //➞ 1
+
+// countOnes([
+//   [1, 1, 1],
+//   [0, 0, 1],
+//   [1, 1, 1]
+// ]) //➞ 7
+
+// countOnes([
+//   [1, 2, 3],
+//   [0, 2, 1],
+//   [5, 7, 33]
+// ]) //➞ 2
+
+///////////////////////////////////////////////////////////////
+
+// Create a function that takes a string and returns a new string with all vowels removed.
+
+function removeVowels(str) {
+}
+
+removeVowels("I have never seen a thin person drinking Diet Coke.")
+//➞ " hv nvr sn  thn prsn drnkng Dt Ck."
+
+// removeVowels("We're gonna build a wall!")
+// //➞ "W'r gnn bld  wll!"
+
+// removeVowels("Happy Thanksgiving to all--even the haters and losers!")
+// //➞ "Hppy Thnksgvng t ll--vn th htrs nd lsrs!"
 
 
 
